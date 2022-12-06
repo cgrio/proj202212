@@ -1,0 +1,16 @@
+<?php
+
+namespace §§Fornecedor§§\§§Pacote§§\Domain\UseCases;
+
+use §§Fornecedor§§\§§Pacote§§\Domain\Entities\§§ModeloSingular§§;
+use §§Fornecedor§§\§§Pacote§§\Domain\Repositories\I§§ModeloSingular§§Repository;
+
+interface I§§ModeloSingular§§UseCase
+{
+    public function __construct(I§§ModeloSingular§§Repository $repository);
+    public function index($request): array;
+    public function show(int $id): §§ModeloSingular§§;
+    public function delete(int $id): bool;
+    public function store(§§ModeloSingular§§ $§§modelosingular§§): §§ModeloSingular§§;
+    public function user§§ModeloPlural§§($request): array;
+}

@@ -1,0 +1,12 @@
+<?php
+
+namespace §§Fornecedor§§\§§Pacote§§\Domain\Entities;
+
+use DateTime;
+
+class §§ModeloSingular§§
+{
+    §§listabaseadatemplate("public ££campotipo££ $££camponome££;")§§
+    public DateTime $created_at;
+    public DateTime $updated_at;
+}

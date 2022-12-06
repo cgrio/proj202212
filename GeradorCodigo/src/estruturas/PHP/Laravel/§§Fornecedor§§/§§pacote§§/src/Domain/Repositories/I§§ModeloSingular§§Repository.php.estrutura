@@ -1,0 +1,14 @@
+<?php
+
+namespace §§Fornecedor§§\§§Pacote§§\Domain\Repositories;
+
+use §§Fornecedor§§\§§Pacote§§\Domain\Entities\§§ModeloSingular§§;
+
+interface I§§ModeloSingular§§Repository
+{
+    public function index($request): array;
+    public function show(int $id): §§ModeloSingular§§;
+    public function delete(int $id): bool;
+    public function store(§§ModeloSingular§§ $§§modelosingular§§): §§ModeloSingular§§;
+    public function user§§ModeloPlural§§($request): array;
+}

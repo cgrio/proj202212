@@ -1,0 +1,23 @@
+<?php
+
+namespace §§Fornecedor§§\§§Pacote§§\Presentation\Handler;
+
+use §§Fornecedor§§\§§Pacote§§\Domain\Entities\§§ModeloSingular§§;
+use §§Fornecedor§§\§§Pacote§§\Domain\UseCases\I§§ModeloSingular§§UseCase;
+
+class §§ModeloSingular§§StoreHandler
+{
+    private $service;
+
+    public function __construct(I§§ModeloSingular§§UseCase $service)
+    {
+        $this->service = $service;
+    }
+
+    public function handle($request)
+    {
+        $§§modelosingular§§ = new §§ModeloSingular§§();
+        §§listabaseadatemplate("$££modelosingular££->££camponome££ = $request->££camponome££;")§§
+        return $this->service->store($§§modelosingular§§);
+    }
+}

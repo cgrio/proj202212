@@ -1,0 +1,21 @@
+{
+    "name": "cgrio/gerador_codigo",
+    "description": "Gerador de código baseado em templates",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Cgrio\\GeradorCodigo\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Alessandro Silva",
+            "email": "alessrio@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

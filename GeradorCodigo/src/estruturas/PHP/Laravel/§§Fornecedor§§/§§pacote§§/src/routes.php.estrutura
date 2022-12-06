@@ -1,0 +1,17 @@
+<?php
+
+use §§Fornecedor§§\§§Pacote§§\Presentation\Api\Controllers\§§ModeloSingular§§Controller;
+use §§Fornecedor§§\§§Pacote§§\Presentation\Html\Controllers\§§ModeloSingular§§Controller as §§ModeloSingular§§HtmlController;
+
+Route::group(['middleware' => 'web'], function () {
+    Route::get('/§§modeloplural§§', [§§ModeloSingular§§HtmlController::class, 'index'])->name('§§modeloplural§§.index');
+    Route::get('/§§modeloplural§§/create', [§§ModeloSingular§§HtmlController::class, 'create'])->name('§§modeloplural§§.create');
+    Route::get('/§§modeloplural§§/{§§modelosingular§§}', [§§ModeloSingular§§HtmlController::class, 'show'])->name('§§modeloplural§§.show');
+    Route::post('/§§modeloplural§§', [§§ModeloSingular§§HtmlController::class, 'store'])->name('§§modeloplural§§.store');
+});
+
+Route::group(['prefix' => 'api', 'middleware' => 'api'], function () {
+    Route::get('/§§modeloplural§§', [§§ModeloSingular§§Controller::class, 'index'])->name('api.§§modeloplural§§.index');
+    Route::get('/§§modeloplural§§/{§§modelosingular§§}', [§§ModeloSingular§§Controller::class, 'show'])->name('api.§§modeloplural§§.show');
+    Route::post('/§§modeloplural§§', [§§ModeloSingular§§Controller::class, 'store'])->name('api.§§modeloplural§§.store');
+});

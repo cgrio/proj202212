@@ -1,0 +1,19 @@
+{
+    "name": "§§fornecedor§§/§§pacote§§",
+    "description": "Modulo de §§pacote§§ feito em Laravel como Package",
+    "type": "project",
+    "license": "private",
+    "autoload": {
+        "psr-4": {
+            "§§Fornecedor§§\\§§Pacote§§\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alessandro Correia",
+            "email": "alessrio@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

@@ -1,0 +1,54 @@
+<?php
+
+namespace §§Fornecedor§§\§§Pacote§§\Data\DataSources\LocalStatic;
+
+use §§Fornecedor§§\§§Pacote§§\Domain\Entities\§§ModeloSingular§§;
+use §§Fornecedor§§\§§Pacote§§\Data\Models\§§ModeloSingular§§ as §§ModeloSingular§§Static;
+use §§Fornecedor§§\§§Pacote§§\Domain\Repositories\I§§ModeloSingular§§Repository;
+
+class §§ModeloSingular§§LocalStaticDataSourceRepository implements I§§ModeloSingular§§Repository
+{
+    public function index($request): array
+    {
+
+        $eloquent = §§ModeloSingular§§Static::paginate(2)->toArray();
+        $static = [
+            [
+                'name' => 'static title 1',
+                'sku' => 'static slug 1',
+                'description' => 'static content 1',
+            ],
+            [
+                'name' => 'static title 2',
+                'sku' => 'static slug 2',
+                'description' => 'static content 2',
+            ]
+        ];
+
+        return [
+            'eloquent' => $eloquent,
+            'static' => $static,
+        ];
+    }
+
+    public function show(int $id): §§ModeloSingular§§
+    {
+        $§§modelosingular§§ = new §§ModeloSingular§§();
+        return $§§modelosingular§§;
+    }
+
+    public function delete(int $id): bool
+    {
+        return false;
+    }
+
+    public function store(§§ModeloSingular§§ $§§modelosingular§§): bool
+    {
+        return false;
+    }
+
+    public function user§§ModeloPlural§§($request): array
+    {
+        return ['STATIC TEST'];
+    }
+}
