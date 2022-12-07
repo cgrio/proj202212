@@ -9,7 +9,7 @@ use §§Fornecedor§§\§§Pacote§§\Domain\Entities\§§ModeloSingular§§ as 
 class §§ModeloSingular§§ extends Model
 {
     protected $table = "§§modeloplural§§";
-    protected $fillable = [§§listanomescampos()§§];
+    protected $fillable = [§§listanomescampos('\'££camponome££,\'')§§];
 
     public function toEntity(): §§ModeloSingular§§Entity
     {

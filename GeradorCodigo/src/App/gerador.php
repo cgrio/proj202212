@@ -102,9 +102,9 @@ class Gerador
                 }
             }
         }
-        \Cgrio\GeradorCodigo\Helpers::dd(\array_values(\array_unique($listaStringsTemplate)));
+        //  \Cgrio\GeradorCodigo\Helpers::dd(\array_values(\array_unique($listaStringsTemplate)));
 
-        return \array_unique($listaStringsTemplate);
+        return \array_values(\array_unique($listaStringsTemplate));
     }
 
     public function printar($mensagem, $cor)
@@ -139,3 +139,5 @@ class Gerador
         echo PHP_EOL;
     }
 }
+
+
