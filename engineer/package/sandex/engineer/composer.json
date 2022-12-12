@@ -1,0 +1,19 @@
+{
+    "name": "sandex/engineer",
+    "description": "Modulo de geração automatizada de código feito em Laravel como Package",
+    "type": "project",
+    "license": "private",
+    "autoload": {
+        "psr-4": {
+            "Sandex\\Engineer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alessandro Correia",
+            "email": "alessrio@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

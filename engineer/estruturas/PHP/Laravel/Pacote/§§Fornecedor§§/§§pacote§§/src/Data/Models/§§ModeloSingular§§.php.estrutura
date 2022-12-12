@@ -1,0 +1,23 @@
+<?php
+
+namespace §§Fornecedor§§\§§Pacote§§\Data\Models;
+
+use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Model;
+use §§Fornecedor§§\§§Pacote§§\Domain\Entities\§§ModeloSingular§§ as §§ModeloSingular§§Entity;
+
+class §§ModeloSingular§§ extends Model
+{
+    protected $table = "§§modeloplural§§";
+    protected $fillable = [§§listanomescampos('\'££camponome££,\'')§§];
+
+    public function toEntity(): §§ModeloSingular§§Entity
+    {
+        $entity = new §§ModeloSingular§§Entity();
+        §§listabaseadatemplate('$entity->££camponome££ = $this->££camponome££;')§§
+        $entity->creaated_at = new \DateTime(Carbon::parse($this->created_at)->toDateTimeString());
+        $entity->updated_at = new \DateTime(Carbon::parse($this->updated_at)->toDateTimeString());
+        return $entity;
+    }
+}
+

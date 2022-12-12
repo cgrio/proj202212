@@ -1,0 +1,51 @@
+<?php
+
+namespace §§Fornecedor§§\§§Pacote§§\Data\DataSources\RemoteMysql;
+
+use §§Fornecedor§§\§§Pacote§§\Domain\Entities\§§ModeloSingular§§;
+use §§Fornecedor§§\§§Pacote§§\Data\Models\§§ModeloSingular§§ as §§ModeloSingular§§Mysql;
+use §§Fornecedor§§\§§Pacote§§\Domain\Repositories\I§§ModeloSingular§§Repository;
+use Illuminate\Support\Facades\Log;
+
+class §§ModeloSingular§§RemoteMysqlDataSourceRepository implements I§§ModeloSingular§§Repository
+{
+    public function index($request): array
+    {
+        return §§ModeloSingular§§Mysql::paginate($request->limit)->toArray();
+    }
+
+    public function show(int $id): §§ModeloSingular§§
+    {
+        $§§modelosingular§§Mysql = §§ModeloSingular§§Mysql::find($id);
+        return $§§modelosingular§§Mysql->toEntity();
+    }
+
+    public function delete(int $id): bool
+    {
+        try {
+            §§ModeloSingular§§Mysql::destroy($id);
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function store(§§ModeloSingular§§ $§§modelosingular§§): §§ModeloSingular§§
+    {
+        try {
+            $model = §§ModeloSingular§§Mysql::create((array)$§§modelosingular§§);
+            return $model->toEntity();
+        } catch (\Exception $e) {
+            echo "Erros na comunicação com o banco de dados";
+            if (\env("APP_ENV") == 'local') {
+                Log::error($e);
+            }
+            return false;
+        }
+    }
+
+    public function user§§ModeloPlural§§($request): array
+    {
+        return §§ModeloSingular§§Mysql::where('authorId', $request->id)->paginate($request->limit)->toArray();
+    }
+}

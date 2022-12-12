@@ -139,5 +139,3 @@ class Gerador
         echo PHP_EOL;
     }
 }
-
-
