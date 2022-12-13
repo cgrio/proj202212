@@ -1,3 +1,4 @@
-<div class="tab-pane fade show {!! $active !!}" id="v-pills-link{!! $id !!}" role="tabpanel" aria-labelledby="v-pills-link{!! $id !!}-tab">
-    {!! $conteudo !!}
+<div class="tab-pane fade{!! $active !== ''? 'show': '' !!} {!! $active !!}" id="v-pills-{!! $id !!}" role="tabpanel"
+	aria-labelledby="v-pills-{!! $id !!}-tab">
+	{!! $conteudo !!}
 </div>

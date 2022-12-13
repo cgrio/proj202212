@@ -7,7 +7,7 @@ class ItensCrud
     public string $caminho = "";
     public string $conteudo = "";
     public string $extensao = "";
-    public string $nome = "";
+    public string $nome_arquivo = "";
 
     public function __construct(
         string $caminho = ""
@@ -15,13 +15,12 @@ class ItensCrud
         $this->caminho = $caminho;
         $this->conteudo = \file_get_contents($caminho);
         $temp = explode("\\", $caminho);
-        $nome = end($temp);
+        $nome_arquivo = end($temp);
         unset($temp);
-        $nome = str_replace('.estrutura', '', $nome);
-        @dump($nome);
-        $temp = explode(".", $nome);
+        $nome_arquivo = str_replace('.estrutura', '', $nome_arquivo);
+        $temp = explode(".", $nome_arquivo);
         $this->extensao = end($temp);
         unset($temp);
-        $this->nome = $nome;
+        $this->nome_arquivo = $nome_arquivo;
     }
 }

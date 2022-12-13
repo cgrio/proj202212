@@ -1,1 +1,3 @@
-<a class="nav-link {!! $active !!}" id="v-pills-link{!! $id !!}-tab" data-mdb-toggle="pill" href="#v-pills-link{!! $id !!}" role="tab" aria-controls="v-pills-link{!! $id !!}" aria-selected="{!! $selected_boolean !!}">{!! $label !!}</a>
+<button class="nav-link {!! $active !!}" id="v-pills-{!! $id !!}" data-bs-toggle="pill"
+	data-bs-target="#v-pills-{!! $id !!}" type="button" role="tab" aria-controls="v-pills-{!! $id !!}"
+	aria-selected="{!! $selected_boolean !!}">{!! $label !!}</button>

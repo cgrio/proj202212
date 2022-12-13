@@ -111,12 +111,17 @@ class EngineerController extends Controller
                 $lista_itens_crud[] = new \Sandex\Engineer\Models\ItensCrud($arq);
             }
         }
-        return view('sandex.engineer.engineer.editor', ['lista_itens_crud' => $lista_itens_crud]);
+
+
+        return view('sandex.engineer.engineer.editor', [
+            'lista_itens_crud' => $lista_itens_crud,
+            'lista_strings_templates' => $lista_strings_templates
+        ]);
     }
 
     private function obterStringsTemplateDeDiretorio($listaArquivos)
     {
-        $listaStringsTemplate = [];
+        $lista_strings_templates = [];
         if (!empty($listaArquivos)) {
             foreach ($listaArquivos as $a) {
                 if (!is_dir($a)) {
@@ -130,13 +135,13 @@ class EngineerController extends Controller
                     $offset = 0;
                     \preg_match_all($pattern, $contents, $resultadosEncontrados, $flags, $offset);
                     // \Cgrio\GeradorCodigo\Helpers::dd($contents);
-                    \array_push($listaStringsTemplate, ...$resultadosEncontrados[0]);
+                    \array_push($lista_strings_templates, ...$resultadosEncontrados[0]);
                 }
             }
         }
-        //  \Cgrio\GeradorCodigo\Helpers::dd(\array_values(\array_unique($listaStringsTemplate)));
+        //  \Cgrio\GeradorCodigo\Helpers::dd(\array_values(\array_unique($lista_strings_templates)));
 
-        return \array_values(\array_unique($listaStringsTemplate));
+        return \array_values(\array_unique($lista_strings_templates));
     }
 
     public function processarDiretorio($dir, &$results = array())
