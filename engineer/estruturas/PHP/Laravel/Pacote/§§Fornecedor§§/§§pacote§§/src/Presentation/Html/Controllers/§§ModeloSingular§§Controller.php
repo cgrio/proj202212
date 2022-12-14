@@ -45,7 +45,6 @@ class §§ModeloSingular§§Controller extends Controller
      */
     public function store(Store§§ModeloSingular§§Request $request)
     {
-
         return Response((array)
         (new §§ModeloSingular§§StoreHandler(
             new §§ModeloSingular§§Service(new §§ModeloSingular§§RemoteMysqlDataSourceRepository())
@@ -75,19 +74,11 @@ class §§ModeloSingular§§Controller extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(Request $request)
     {
         return Response((new §§ModeloSingular§§DeleteHandler(
             new §§ModeloSingular§§Service(new §§ModeloSingular§§RemoteMysqlDataSourceRepository())
-        )
-        )->handle($request));
+        ))->handle($request));
     }
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\Response
-     */
 }
