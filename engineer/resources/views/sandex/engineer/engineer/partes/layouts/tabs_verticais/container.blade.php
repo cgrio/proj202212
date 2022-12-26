@@ -29,6 +29,8 @@
         @else
             @include('sandex.engineer.engineer.partes.formulario.text', [ 'campo'=>
             str_replace("§","",$lista_strings_templates[$i])."-{$i}",
+            'placeholder'=>
+            str_replace("§","",$lista_strings_templates[$i]),
             'campo_label'=> str_replace("§","",$lista_strings_templates[$i]),
             'required'=>'required',
             'autofocus'=>'',
@@ -52,24 +54,26 @@
 @section('styles')
 <style type="text/css">
 	.textarea100 {
-        width: 100%;
-    min-height: 700px;
+		width: 100%;
+		height: 100%;
+		background-color: blue;
 	}
-
 	.tab-pane {
 		height: 100%;
 		width: 100%;
+
 	}
-
-
 
 	.tab-content {
 		display: block;
 		background-color: #999999;
 		height: 100%;
 		width: 100%;
+        box-shadow: 1px 1px 1px cyan, 0 0 10px blue, 0 0 5px darkblue;
+        box-shadow: 1px 1px 1px rgb(0 180 180 / 55%), 0 0 5px rgb(0 255 0/ 55%), 0 0 3px rgb(0 255 255 / 55%);
+        padding: 20px 30px;
+        border-radius: 5px 10px 10px 5px;
 	}
-
 	.textwrapper {
 		border: 1px solid #999999;
 		margin: 5px 0;
