@@ -7,7 +7,7 @@
 
 	<div class="row justify-content-center">
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="/engineer/editor">
         @csrf
         <input id="acao" placeholder="acao" type="text"
 			class="form-control" name="acao"
