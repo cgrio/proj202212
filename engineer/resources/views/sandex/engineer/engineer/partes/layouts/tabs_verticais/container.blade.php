@@ -54,15 +54,14 @@
 @section('styles')
 <style type="text/css">
 	.textarea100 {
-		width: 100%;
-		height: 100%;
-		background-color: blue;
+        width: 100%;
+    min-height: 700px;
 	}
 	.tab-pane {
 		height: 100%;
 		width: 100%;
 
-	}
+    }
 
 	.tab-content {
 		display: block;
