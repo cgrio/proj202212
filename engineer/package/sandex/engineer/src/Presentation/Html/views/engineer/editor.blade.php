@@ -7,17 +7,24 @@
 
 	<div class="row justify-content-center">
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="/engineer/editor">
         @csrf
-        <input id="acao" placeholder="acao" type="text"
-			class="form-control" name="acao"
-			value="revisar">
+        <div class="p-5">
+
+            <input id="acao" placeholder="acao" type="text"
+			class="form-control" name="acao" value="revisar">
+        </div>
 
 		@include('sandex.engineer.engineer.partes.layouts.tabs_verticais.container')
 
+        <div class="p-5">
+
+            @include('sandex.engineer.engineer.partes.formulario.submit', [
+                'label'=>'Continuar'
+                ])
+            </div>
     </form>
     </div>
-c78b95439e6c40a1aa2959f41dfb0986
 </div>
 @endsection
 
@@ -47,9 +54,11 @@ inputs.forEach(function(item){
                 console.log('encontrei o igual');
                 console.log(/[A-Z]/.test(itemLista.getAttribute('name').replace(regex, "")));
             }
+
         console.log('nao');
-        }
+}
        });
+
     });
    });
 

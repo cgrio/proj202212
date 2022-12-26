@@ -9,14 +9,20 @@
 
     <form method="POST" action="/engineer/editor">
         @csrf
-        <input id="acao" placeholder="acao" type="text"
-			class="form-control" name="acao"
-			value="revisar">
+        <div class="p-5">
+
+            <input id="acao" placeholder="acao" type="text"
+			class="form-control" name="acao" value="revisar">
+        </div>
 
 		@include('sandex.engineer.engineer.partes.layouts.tabs_verticais.container')
-        @include('sandex.engineer.engineer.partes.formulario.submit', [
-                        'label'=>'Continuar'
-                        ])
+
+        <div class="p-5">
+
+            @include('sandex.engineer.engineer.partes.formulario.submit', [
+                'label'=>'Continuar'
+                ])
+            </div>
     </form>
     </div>
 </div>
