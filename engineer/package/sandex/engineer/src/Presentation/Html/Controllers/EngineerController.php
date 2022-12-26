@@ -16,12 +16,6 @@ class EngineerController extends Controller
     public function index(Request $request)
     {
         $data = [];
-        // $data = Response(
-        //     (new ProductIndexHandler(
-        //         new ProductService(new ProductRemoteMysqlDataSourceRepository())
-        //     )
-        //     )->handle($request)
-        // );
         $dir = \base_path('/estruturas');
         $results = [];
         $labelsFinais = [];
@@ -88,14 +82,41 @@ class EngineerController extends Controller
 
     public function editor(Request $request)
     {
+        if ($request->get('acao')) {
+            return $this->editorRevisao($request);
+        }
+        $dir = \base_path('/estruturas');
+        $results = [];
+        $this->processarDiretorio($dir, $results);
+        $pastas_de_trabalho = [];
+        foreach ($results as $valor) {
+            if (\str_contains($valor, $request->get('arquiteturas') . '\\')) {
+                $pastas_de_trabalho[] = $valor;
+            }
+        }
+        $pastas_de_trabalho = \array_values($pastas_de_trabalho);
+        $lista_strings_templates = $this->obterStringsTemplateDeDiretorio($pastas_de_trabalho);
+
+        $lista_itens_crud = [];
+        foreach ($pastas_de_trabalho as $arq) {
+            if (!is_dir($arq)) {
+                $lista_itens_crud[] = new \Sandex\Engineer\Models\ItensCrud($arq);
+            }
+        }
+
+
+        return view('sandex.engineer.engineer.editor', [
+            'lista_itens_crud' => $lista_itens_crud,
+            'lista_strings_templates' => $lista_strings_templates
+        ]);
+    }
+
+    public function editorRevisao(Request $request)
+    {
 
         $dir = \base_path('/estruturas');
         $results = [];
         $this->processarDiretorio($dir, $results);
-        // $pastas_de_trabalho = \array_filter(array_values($results), function ($k) use ($request) {
-        //     echo $k;
-        //     return \str_contains($k, $request->get('arquiteturas'));
-        // }, ARRAY_FILTER_USE_KEY);
         $pastas_de_trabalho = [];
         foreach ($results as $valor) {
             if (\str_contains($valor, $request->get('arquiteturas') . '\\')) {
@@ -126,7 +147,6 @@ class EngineerController extends Controller
             foreach ($listaArquivos as $a) {
                 if (!is_dir($a)) {
                     $contents = file_get_contents($a);
-                    // \Cgrio\GeradorCodigo\Helpers::dd($contents);
                     $pattern = "/§§(.*)§§/";
                     $pattern = "/§§([A-Za-z0-9\(\);\.\[\]\'\"]){2,}§§/";
                     $pattern = "/§§([A-Za-z0-9\(\)\$\"\'£\=\-\>\ ;]{2,})§§/";
@@ -134,12 +154,10 @@ class EngineerController extends Controller
                     $flags = 0;
                     $offset = 0;
                     \preg_match_all($pattern, $contents, $resultadosEncontrados, $flags, $offset);
-                    // \Cgrio\GeradorCodigo\Helpers::dd($contents);
                     \array_push($lista_strings_templates, ...$resultadosEncontrados[0]);
                 }
             }
         }
-        //  \Cgrio\GeradorCodigo\Helpers::dd(\array_values(\array_unique($lista_strings_templates)));
 
         return \array_values(\array_unique($lista_strings_templates));
     }
@@ -158,4 +176,7 @@ class EngineerController extends Controller
         }
         return $results;
     }
+
 }
+
+

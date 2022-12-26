@@ -5,15 +5,8 @@
 <h1 class="h1">Construção de templates</h1>
 <p>Preencha as informações para ver os resultados</p>
 
-<form method="POST" action="{{ route('login') }}">
-                        @csrf
-	<div class="row justify-content-center p-5">
-		@include('sandex.engineer.engineer.partes.layouts.tabs_verticais.container',[
-		'label'=> 'label',
-		'id'=> 'id',
-		'active'=> 'active',
-		'selected_boolean'=> false,
-		])
+	<div class="row justify-content-center">
+		@include('sandex.engineer.engineer.partes.layouts.tabs_verticais.container')
 	</div>
     @include('sandex.engineer.engineer.partes.formulario.submit', [
                         'label'=>'Continuar'
