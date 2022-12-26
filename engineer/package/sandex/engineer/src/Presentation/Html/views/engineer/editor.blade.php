@@ -14,17 +14,10 @@
 			value="revisar">
 
 		@include('sandex.engineer.engineer.partes.layouts.tabs_verticais.container')
-<<<<<<< HEAD
 
     </form>
     </div>
-=======
-	</div>
-    @include('sandex.engineer.engineer.partes.formulario.submit', [
-                        'label'=>'Continuar'
-                        ])
-        </form>
->>>>>>> 0a531538c78b95439e6c40a1aa2959f41dfb0986
+c78b95439e6c40a1aa2959f41dfb0986
 </div>
 @endsection
 
