@@ -13,6 +13,7 @@ class EngineerController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
         $data = [];
@@ -174,9 +175,23 @@ class EngineerController extends Controller
                 $results[] = $path;
             }
         }
+
         return $results;
     }
-
+    public function passo1()
+    {
+        return view('sandex.engineer.engineer.passo1');
+    }
+    public function passo2(Request $request)
+    {
+        return view('sandex.engineer.engineer.passo2', [ 'request' => $request]);
+    }
+    public function passo3(Request $request)
+    {
+        return view('sandex.engineer.engineer.passo3', [ 'request' => $request]);
+    }
+    public function passo4(Request $request)
+    {
+        return view('sandex.engineer.engineer.passo4', [ 'request' => $request]);
+    }
 }
-
-
