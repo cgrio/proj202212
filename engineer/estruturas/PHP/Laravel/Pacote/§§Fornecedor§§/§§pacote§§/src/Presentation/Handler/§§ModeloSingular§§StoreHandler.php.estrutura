@@ -17,7 +17,7 @@ class §§ModeloSingular§§StoreHandler
     public function handle($request)
     {
         $§§modelosingular§§ = new §§ModeloSingular§§();
-        §§listabaseadatemplate($££modelosingular££->££camponome££ = $request->££camponome££;)§§
+        @@listabaseadatemplate($§§modelosingular§§->££camponome££ = $request->££camponome££;)@@
         return $this->service->store($§§modelosingular§§);
     }
 }

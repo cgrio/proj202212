@@ -9,12 +9,12 @@ use §§Fornecedor§§\§§Pacote§§\Domain\Entities\§§ModeloSingular§§ as 
 class §§ModeloSingular§§ extends Model
 {
     protected $table = "§§modeloplural§§";
-    protected $fillable = [§§listanomescampos('\'££camponome££,\'')§§];
+    protected $fillable = [@@listabaseadatemplate(££camponome££,)@@];
 
     public function toEntity(): §§ModeloSingular§§Entity
     {
         $entity = new §§ModeloSingular§§Entity();
-        §§listabaseadatemplate($entity->££camponome££ = $this->££camponome££;)§§
+        @@listabaseadatemplate($entity->££camponome££ = $this->££camponome££;)@@
         $entity->creaated_at = new \DateTime(Carbon::parse($this->created_at)->toDateTimeString());
         $entity->updated_at = new \DateTime(Carbon::parse($this->updated_at)->toDateTimeString());
         return $entity;

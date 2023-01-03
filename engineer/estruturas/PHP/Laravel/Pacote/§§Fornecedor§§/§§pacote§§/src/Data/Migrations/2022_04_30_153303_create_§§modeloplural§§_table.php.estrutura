@@ -15,7 +15,7 @@ class Create§§ModeloPlural§§Table extends Migration
     {
         Schema::create('§§modeloplural§§', function (Blueprint $table) {
             $table->id();
-            §§listabaseadatemplate($table->££campotipo££('££camponome££')->nullable()->unique();)§§
+            @@listabaseadatemplate($table->££campotipo££('££camponome££')££camponullable££££campounique££££campounsigned££;)@@
         });
     }
 

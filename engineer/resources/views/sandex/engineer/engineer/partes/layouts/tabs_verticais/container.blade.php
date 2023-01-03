@@ -12,7 +12,7 @@
 		<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"
 			tabindex="0">
 @if($lista_strings_templates)
-    @for ($i = 1; $i < count($lista_strings_templates);$i++)
+    @for ($i = 0; $i < count($lista_strings_templates);$i++)
 
     @php if(str_contains($lista_strings_templates[$i], "(")):
 
