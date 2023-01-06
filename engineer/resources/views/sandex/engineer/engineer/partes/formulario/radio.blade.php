@@ -3,7 +3,7 @@
 
     <div class="col-md-6">
         @foreach($valores as $a)
-        <input id="{!! $campo . $a !!}" type="radio" class="form-check-input @error('{!! $campo !!}') is-invalid @enderror" name="{!! $campo !!}" {!! $required !!} $value={{$a}} autocomplete="{!! $campo !!}" value="{{$a}}" {!! $autofocus !!} @if($value==$a) checked @endif>
+        <input id="{!! $campo . $a !!}" type="radio" class="form-check-input @error('{!! $campo !!}') is-invalid @enderror" name="{!! $campo !!}" {!! $requerido !!} $value={{$a}} autocomplete="{!! $campo !!}" value="{{$a}}" {!! $autofocus !!} @if($value==$a) checked @endif>
         <label for="{!! $campo . $a !!}" class="form-check-label">
             {!! $a !!}</label>
 

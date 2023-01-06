@@ -18,7 +18,7 @@
                             'placeholder'=>
                             str_replace("§","",$lista_strings_templates[$i]),
                             'campo_label'=> str_replace("§","",$lista_strings_templates[$i]),
-                            'required'=>'required',
+                            'requerido'=>'required',
                             'autofocus'=>'',
                             'value'=> ''
                             ])
@@ -40,7 +40,7 @@
                                         'placeholder'=>
                                         str_replace("§","",$lista_strings_templates[$i]),
                                         'campo_label'=> str_replace("§","",$lista_strings_templates[$i]),
-                                        'required'=>'required',
+                                        'requerido'=>'required',
                                         'autofocus'=>'',
                                         'value'=> ''
                                         ])
@@ -65,18 +65,19 @@
 
                                     @include('sandex.engineer.engineer.partes.accordion.accordion_abertura', ['titulo'=> 'Campos', 'id'=>'a2'] )
                                     @include('sandex.engineer.engineer.partes.accordion.item_abertura' ,['titulo'=> 'Campos', 'id'=>'a2'] )
-                                    @if ($lista_strings_campos)
+                                    <!-- @if ($lista_strings_campos)
                                     @for ($i = 0; $i < count($lista_strings_campos);$i++) @include('sandex.engineer.engineer.partes.formulario.text', [ 'campo'=>
                                         str_replace("£","",$lista_strings_campos[$i])."-{$i}",
                                         'placeholder'=>
                                         str_replace("£","",$lista_strings_campos[$i]),
                                         'campo_label'=> str_replace("£","",$lista_strings_campos[$i]),
-                                        'required'=>'required',
+                                        'requerido'=>'required',
                                         'autofocus'=>'',
                                         'value'=> ''
                                         ])
                                         @endfor
-                                        @endif
+                                        @endif -->
+                                        @include('sandex.engineer.engineer.partes.componentes.campo_modelo' )
                                         <div class="col-md-8 offset-md-4">
                                             <button type="button" class="btn btn-primary btn-sm">
                                                 Adicionar
@@ -241,8 +242,6 @@
         lista_modelos.push(modelo);
         modelo_definido = true;
         escondeAccordions();
-
-
     }
 
     function obterValorCampo(campo) {

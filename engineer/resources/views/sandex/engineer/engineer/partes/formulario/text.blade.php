@@ -4,7 +4,7 @@
 	<div class="col-md-6">
 		<input id="{!! $campo !!}" placeholder="{!! $placeholder !!}" type="text"
 			class="form-control @error('{!! $campo !!}') is-invalid @enderror" name="{!! $campo !!}"
-			value="{!! $value !!}" {{ $required}} autocomplete="{!! $campo !!}" {{$autofocus}}>
+			value="{!! $value !!}" {{ $requerido}} autocomplete="{!! $campo !!}" {{$autofocus}}>
 		@error('{!! $campo !!}')
 		<span class="invalid-feedback" role="alert">
 			<strong>{{ $message }}</strong>
