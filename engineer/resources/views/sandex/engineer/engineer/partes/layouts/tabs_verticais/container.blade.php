@@ -22,7 +22,7 @@
         @include('sandex.engineer.engineer.partes.formulario.textarea', [ 'campo'=>
             str_replace("§","",$lista_strings_templates[$i])."-{$i}",
             'campo_label'=> str_replace("§","",$lista_strings_templates[$i]),
-            'required'=>'required',
+            'requerido'=>'required',
             'autofocus'=>'',
             'value'=> $valor
             ])
@@ -32,7 +32,7 @@
             'placeholder'=>
             str_replace("§","",$lista_strings_templates[$i]),
             'campo_label'=> str_replace("§","",$lista_strings_templates[$i]),
-            'required'=>'required',
+            'requerido'=>'required',
             'autofocus'=>'',
             'value'=> ''
             ])
@@ -60,9 +60,7 @@
 	.tab-pane {
 		height: 100%;
 		width: 100%;
-
     }
-
 	.tab-content {
 		display: block;
 		background-color: #999999;

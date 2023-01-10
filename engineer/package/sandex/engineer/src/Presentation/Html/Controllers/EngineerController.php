@@ -158,4 +158,8 @@ class EngineerController extends Controller
     {
         return view('sandex.engineer.engineer.passo4', [ 'request' => $request]);
     }
+
+    public function landingPage(){
+        return view('sandex.engineer.engineer.landing_page');
+    }
 }

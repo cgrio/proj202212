@@ -16,7 +16,7 @@
                         @include('sandex.engineer.engineer.partes.formulario.select', [
                         'campo'=>'arquiteturas',
                         'campo_label'=>'Arquiteturas Disponíveis',
-                        'required'=>'required',
+                        'requerido'=>'required',
                         'autofocus'=>'autofocus',
                         'valores'=> \array_values($arquiteturas),
                         'value'=> ''

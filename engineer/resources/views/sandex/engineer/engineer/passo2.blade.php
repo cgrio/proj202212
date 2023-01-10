@@ -79,7 +79,7 @@
                                         @endif -->
                                         @include('sandex.engineer.engineer.partes.componentes.campo_modelo' )
                                         <div class="col-md-8 offset-md-4">
-                                            <button type="button" class="btn btn-primary btn-sm">
+                                            <button type="button" onclick="addCampo()" class="btn btn-primary btn-sm">
                                                 Adicionar
                                             </button>
                                             <button type="reset" class="btn btn-light btn-sm">
@@ -92,7 +92,12 @@
                             </div>
                         </div>
                         <div class="col">
-                            Vazio
+                        <div id="modelo_display">
+
+                        </div>
+                        <div id="campos_display">
+
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -146,10 +151,7 @@
             regex = /[^a-zA-Z]/gi;
             //if(itemLista.getAttribute('name').replace(regex, "").toLowerCase() == campo){
             if (itemLista.getAttribute('name').replace(regex, "").toLowerCase() === campo.getAttribute('name').replace(regex, "").toLowerCase()) {
-
                 if (itemLista.getAttribute('name').replace(regex, "") !== campo.getAttribute('name').replace(regex, "")) {
-
-
                     if ((/[A-Z]/).test(itemLista.getAttribute('name'))) {
                         itemLista.value = firstUpper(snakeToCamel(campo.value));
                     } else {
@@ -187,7 +189,7 @@
         }
 
     }
-    class Campos {
+    class Campo {
         tipo = '';
         nome = '';
         label = '';
@@ -242,8 +244,32 @@
         lista_modelos.push(modelo);
         modelo_definido = true;
         escondeAccordions();
+        exibirModelo();
     }
 
+    function addCampo() {
+     let campo = new Campo();
+     campo.nome = toSnakeCase(document.getElementsByName('campo_nome').value());
+     campo.tipo = toSnakeCase(document.getElementsByName('campo_tipo').value());
+     campo.nullable = toSnakeCase(document.getElementsByName('campo_nullable').value());
+     campo.requerido = toSnakeCase(document.getElementsByName('campo_requerido').value());
+     campo.unsigned = toSnakeCase(document.getElementsByName('campo_unsigned').value());
+     campo.chave_estrangeira = toSnakeCase(document.getElementsByName('campo_chave_estrangeira').value());
+     campo.chave_primaria = toSnakeCase(document.getElementsByName('campo_chave_primaria').value());
+     modeloAtual.campos.push(campo);
+        escondeAccordions();
+        exibirModelo();
+    }
+
+
+    function exibirModelo(){
+        const texto = document.createTextNode(modeloAtual.modeloCaixaAltaSingular);
+      modeloAtual.campos.forEach(function(c){
+          let campos = document.createTextNode(c.label + ": "+c.nome);
+          document.getElementById("campos_display").appendChild(campos);
+      });
+        document.getElementById("modelo_display").appendChild(texto);
+    }
     function obterValorCampo(campo) {
         retorno = '';
         let inputs = document.querySelectorAll("input");

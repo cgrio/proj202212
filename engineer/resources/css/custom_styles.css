@@ -3,7 +3,6 @@ input,select, textarea{
     box-shadow: inset 1px 1px 1px rgb(0 180 180 / 55%), inset 0 0 5px rgb(0 180 255/ 55%), inset 0 0 3px rgb(0 255 255 / 55%);
     border-radius: 5px;
 }
-
 input:focus, select:focus, textarea:focus{
     box-shadow: inset 1px 1px 1px rgb(0 180 180 / 55%), inset 0 0 10px rgb(0 255 0/ 100%),inset 0 0 5px rgb(0 255 255 / 55%);
     box-shadow: inset 1px 1px 1px rgb(0 180 180 / 100%), inset 0 0 5px rgb(0 180 255/ 55%), inset 0 0 3px rgb(0 255 255 / 55%);
@@ -16,12 +15,8 @@ input:focus, select:focus, textarea:focus{
     -webkit-box-shadow: 0px 0px 5px rgb(0 255 0/ 100%);
     box-shadow: 0px 0px 5px   rgb(0 180 180 / 55%);
     outline-color:rgb(0 255 0/ 100%);
-
 }
-
 input:hover, select:hover, textarea:hover{
     box-shadow: inset 1px 1px 1px rgb(0 180 180 / 55%), inset 0 0 10px rgb(0 255 0/ 55%),inset 0 0 5px rgb(0 255 255 / 55%);
     box-shadow: unset 1px 1px 1px rgb(0 180 180 / 55%), unset 0 0 5px rgb(0 180 255/ 55%), unset 0 0 3px rgb(0 255 255 / 55%);
 }
-
-
