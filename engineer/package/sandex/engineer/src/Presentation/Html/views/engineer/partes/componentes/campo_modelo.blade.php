@@ -125,41 +125,57 @@ $tipos = [
             'value'=> 255
             ])
 
-            @include('sandex.engineer.engineer.partes.formulario.radio', [
-                        'campo'=>'nullable',
+
+
+
+                        @include('sandex.engineer.engineer.partes.formulario.select', [
+                        'campo'=>'campo_nullable',
                         'campo_label'=>'Permitir Nullo',
                         'requerido'=>'required',
                         'autofocus'=>'',
-                        'valores'=> ['sim','não'],
-                        'value'=> 'não'
+                        'valores'=> ['não','sim',],
+                        'value'=> ''
                         ])
 
 
-            @include('sandex.engineer.engineer.partes.formulario.radio', [
-                        'campo'=>'primary',
-                        'campo_label'=>'Chave Primária',
+
+
+                        @include('sandex.engineer.engineer.partes.formulario.select', [
+                        'campo'=>'campo_chave_primaria',
+                        'campo_label'=>'É chave primária',
                         'requerido'=>'required',
                         'autofocus'=>'',
-                        'valores'=> ['sim','não'],
+                        'valores'=> ['não','sim',],
                         'value'=> 'não'
                         ])
 
-          @include('sandex.engineer.engineer.partes.formulario.radio', [
-                        'campo'=>'unique',
+
+                        @include('sandex.engineer.engineer.partes.formulario.select', [
+                        'campo'=>'campo_chave_estrangeira',
+                        'campo_label'=>'É chave Estrangeira',
+                        'requerido'=>'required',
+                        'autofocus'=>'',
+                        'valores'=> ['não','sim',],
+                        'value'=> 'não'
+                        ])
+
+          @include('sandex.engineer.engineer.partes.formulario.select', [
+                        'campo'=>'campo_unico',
                         'campo_label'=>'Campo Único',
                         'requerido'=>'required',
                         'autofocus'=>'',
-                        'valores'=> ['sim','não'],
+                        'valores'=> ['não','sim'],
                         'value'=> 'não'
                         ])
 
 
-                        @include('sandex.engineer.engineer.partes.formulario.radio', [
-                        'campo'=>'unsigned',
+
+                        @include('sandex.engineer.engineer.partes.formulario.select', [
+                        'campo'=>'campo_unsigned',
                         'campo_label'=>'Permitir valores Negativos',
                         'requerido'=>'required',
                         'autofocus'=>'',
-                        'valores'=> ['sim','não'],
+                        'valores'=> ['não','sim'],
                         'value'=> 'não'
                         ])
 

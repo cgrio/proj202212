@@ -60,23 +60,12 @@
                                 </form>
                             </div>
                             <br />
-                            <div id='form-campos' class="invisible">
+                            <div id='form-campos' style="display: none;">
                                 <form action="">
 
                                     @include('sandex.engineer.engineer.partes.accordion.accordion_abertura', ['titulo'=> 'Campos', 'id'=>'a2'] )
                                     @include('sandex.engineer.engineer.partes.accordion.item_abertura' ,['titulo'=> 'Campos', 'id'=>'a2'] )
-                                    <!-- @if ($lista_strings_campos)
-                                    @for ($i = 0; $i < count($lista_strings_campos);$i++) @include('sandex.engineer.engineer.partes.formulario.text', [ 'campo'=>
-                                        str_replace("£","",$lista_strings_campos[$i])."-{$i}",
-                                        'placeholder'=>
-                                        str_replace("£","",$lista_strings_campos[$i]),
-                                        'campo_label'=> str_replace("£","",$lista_strings_campos[$i]),
-                                        'requerido'=>'required',
-                                        'autofocus'=>'',
-                                        'value'=> ''
-                                        ])
-                                        @endfor
-                                        @endif -->
+
                                         @include('sandex.engineer.engineer.partes.componentes.campo_modelo' )
                                         <div class="col-md-8 offset-md-4">
                                             <button type="button" onclick="addCampo()" class="btn btn-primary btn-sm">
@@ -222,8 +211,11 @@
 
     function escondeAccordions() {
         if (modelo_definido) {
-            document.getElementById('form-modelo').classList.toggle('invisible');
-            document.getElementById('form-campos').classList.toggle('invisible');
+            document.getElementById('form-modelo').style.display = 'none';
+            document.getElementById('form-campos').style.display = 'block';
+        }else{
+            document.getElementById('form-modelo').style.display = 'block';
+            document.getElementById('form-campos').style.display = 'nome';
         }
     }
 
@@ -248,24 +240,24 @@
         document.getElementById('campo_tamanho').value,
         document.getElementById('campo_label').value
      );
-     campo.requerido = document.getElementById('campo_requerido').value,
+
         campo.nullable = document.getElementById('campo_nullable').value,
         campo.unsigned = document.getElementById('campo_unsigned').value,
-        campo.primaria = document.getElementById('chave_primaria').value,
-        campo.estrangeira = document.getElementById('chave_estrangeira').value
-
-     modeloAtual.campos.push(campo);
+        campo.primaria = document.getElementById('campo_chave_primaria').value,
+        campo.estrangeira = document.getElementById('campo_chave_estrangeira').value
+        modeloAtual.campos.push(campo);
         escondeAccordions();
         exibirModelo();
     }
-
-
     function exibirModelo(){
+        document.getElementById("campos_display").innerHTML = '';
+        document.getElementById("modelo_display").innerHTML = '';
         const texto = document.createTextNode(modeloAtual.modeloCaixaAltaSingular);
-      modeloAtual.campos.forEach(function(c){
-          let campos = document.createTextNode(c.label + ": "+c.nome);
-          document.getElementById("campos_display").appendChild(campos);
-      });
+        modeloAtual.campos.forEach(function(c){
+            let campo = document.createTextNode(c.label + ": "+c.tipo);
+            document.getElementById("campos_display").appendChild(campo);
+            document.getElementById("campos_display").appendChild(document.createElement("br"));
+        });
         document.getElementById("modelo_display").appendChild(texto);
     }
     function obterValorCampo(campo) {
@@ -277,7 +269,6 @@
             }
         });
         return retorno;
-
     }
 </script>
 @endsection
