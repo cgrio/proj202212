@@ -116,7 +116,7 @@ $tipos = [
 
 
 @include('sandex.engineer.engineer.partes.formulario.number', [ 'campo'=>
-            'tamanho',
+            'campo_tamanho',
             'placeholder'=>
             'Tamanho',
             'campo_label'=> 'Tamanho',

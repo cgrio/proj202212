@@ -193,26 +193,22 @@
         tipo = '';
         nome = '';
         label = '';
-        requerido = '';
+        tamanho = 50;
+        requerido = false;
         nullable = true;
-        unsigned = null;
+        unsigned = false;
         chave_primaria = false;
         chave_estrangeira = false;
+        comentario = '';
         constructor(nome,
+            tipo,
+            tamanho,
             label,
-            requerido,
-            nullable,
-            unsigned,
-            chave_primaria,
-            chave_estrangeira) {
+          ) {
             this.tipo = tipo;
+            this.tamanho = tamanho;
             this.nome = nome;
             this.label = label;
-            this.requerido = requerido;
-            this.nullable = nullable;
-            this.unsigned = unsigned;
-            this.chave_primaria = chave_primaria;
-            this.chave_estrangeira = chave_estrangeira;
         }
     }
 
@@ -225,11 +221,8 @@
     }
 
     function escondeAccordions() {
-
-
         if (modelo_definido) {
             document.getElementById('form-modelo').classList.toggle('invisible');
-
             document.getElementById('form-campos').classList.toggle('invisible');
         }
     }
@@ -243,19 +236,24 @@
         modeloAtual = modelo;
         lista_modelos.push(modelo);
         modelo_definido = true;
-        escondeAccordions();
+        escondeAccordions()
         exibirModelo();
     }
 
     function addCampo() {
-     let campo = new Campo();
-     campo.nome = toSnakeCase(document.getElementsByName('campo_nome').value());
-     campo.tipo = toSnakeCase(document.getElementsByName('campo_tipo').value());
-     campo.nullable = toSnakeCase(document.getElementsByName('campo_nullable').value());
-     campo.requerido = toSnakeCase(document.getElementsByName('campo_requerido').value());
-     campo.unsigned = toSnakeCase(document.getElementsByName('campo_unsigned').value());
-     campo.chave_estrangeira = toSnakeCase(document.getElementsByName('campo_chave_estrangeira').value());
-     campo.chave_primaria = toSnakeCase(document.getElementsByName('campo_chave_primaria').value());
+        console.log(document.getElementById('campo_nome'));
+     let campo = new Campo(
+        toSnakeCase(document.getElementById('campo_nome').value),
+        document.getElementById('campo_tipo').value,
+        document.getElementById('campo_tamanho').value,
+        document.getElementById('campo_label').value
+     );
+     campo.requerido = document.getElementById('campo_requerido').value,
+        campo.nullable = document.getElementById('campo_nullable').value,
+        campo.unsigned = document.getElementById('campo_unsigned').value,
+        campo.primaria = document.getElementById('chave_primaria').value,
+        campo.estrangeira = document.getElementById('chave_estrangeira').value
+
      modeloAtual.campos.push(campo);
         escondeAccordions();
         exibirModelo();
