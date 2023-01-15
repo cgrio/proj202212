@@ -132,7 +132,6 @@
             regrasFormulario(e.target);
         });
     });
-
     function regrasFormulario(campo) {
         inputs.forEach(function(itemLista) {
             let regex = /[^campo]/gi;
@@ -150,19 +149,15 @@
             }
         });
     }
-
     function salvarArrayLS(chave, array_para_salvar) {
         localStorage.setItem(chave, JSON.stringify(array_para_salvar));
     }
-
     function recuperarArrayLS(chave) {
         return JSON.parse(localStorage.getItem(chave));
     }
-
     function limparLS() {
         localStorage.clear();
     }
-
     class Modelo {
         modeloCaixaBaixaSingular = '';
         modeloCaixaBaixaPlural = '';
@@ -170,13 +165,11 @@
         modeloCaixaAltaPlural = '';
         campos = [];
         constructor(modeloCaixaBaixaSingular, modeloCaixaBaixaPlural) {
-
             this.modeloCaixaBaixaSingular = modeloCaixaBaixaSingular;
             this.modeloCaixaBaixaPlural = modeloCaixaBaixaPlural;
             this.modeloCaixaAltaSingular = camelCase(modeloCaixaBaixaSingular);
             this.modeloCaixaAltaPlural = camelCase(modeloCaixaBaixaPlural);
         }
-
     }
     class Campo {
         tipo = '';
@@ -200,15 +193,9 @@
             this.label = label;
         }
     }
-
-
-
     window.onload = function() {
-
         escondeAccordions();
-
     }
-
     function escondeAccordions() {
         if (modelo_definido) {
             document.getElementById('form-modelo').style.display = 'none';
@@ -218,7 +205,6 @@
             document.getElementById('form-campos').style.display = 'nome';
         }
     }
-
     function addModelo() {
         modelo_definido = true;
         let titulo_modelo_singular = obterValorCampo('modelosingular');
@@ -231,7 +217,6 @@
         escondeAccordions()
         exibirModelo();
     }
-
     function addCampo() {
         console.log(document.getElementById('campo_nome'));
      let campo = new Campo(
@@ -240,7 +225,6 @@
         document.getElementById('campo_tamanho').value,
         document.getElementById('campo_label').value
      );
-
         campo.nullable = document.getElementById('campo_nullable').value,
         campo.unsigned = document.getElementById('campo_unsigned').value,
         campo.primaria = document.getElementById('campo_chave_primaria').value,
@@ -272,3 +256,6 @@
     }
 </script>
 @endsection
+
+
+

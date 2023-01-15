@@ -7,3 +7,14 @@ Tarefas:
 6. Criar interface de geração de crud
    1. Criar comando que retorne todos as strings de geração de template
 7. Criar comando que permita persistir os arquivos no disco
+
+
+para pegar toda tag style via regex
+
+style="(.*?)"
+
+
+e tudo entre as tags pre
+
+<pre>(.*?)</pre>
+
