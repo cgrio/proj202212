@@ -27,74 +27,74 @@
 
             @php
 $tipos = [
-'bigIncrements',
-'bigInteger',
-'binary',
-'boolean',
-'char',
-'dateTimeTz',
-'dateTime',
-'date',
-'decimal',
-'double',
-'enum',
-'float',
+'bigIncrements'=>'bigIncrements',
+'bigInteger'=>'bigInteger',
+'binary'=>'binary',
+'boolean'=>'boolean',
+'char'=>'char',
+'dateTimeTz'=>'dateTimeTz',
+'dateTime'=>'dateTime',
+'date'=>'date',
+'decimal'=>'decimal',
+'double'=>'double',
+'enum'=>'enum',
+'float'=>'float',
 //'foreignId',
 //'foreignIdFor',
 //'foreignUlid',
 //'foreignUuid',
 //'geometryCollection',
-'geometry',
-'id',
-'increments',
-'integer',
-'ipAddress',
-'json',
-'jsonb',
-'lineString',
-'longText',
-'macAddress',
-'mediumIncrements',
-'mediumInteger',
-'mediumText',
-'morphs',
-'multiLineString',
-'multiPoint',
-'multiPolygon',
-'nullableMorphs',
-'nullableTimestamps',
-'nullableUlidMorphs',
-'nullableUuidMorphs',
-'point',
-'polygon',
-'rememberToken',
-'set',
-'smallIncrements',
-'smallInteger',
+'geometry'=>'geometry',
+'id'=>'id',
+'increments'=>'increments',
+'integer'=>'integer',
+'ipAddress'=>'ipAddress',
+'json'=>'json',
+'jsonb'=>'jsonb',
+'lineString'=>'lineString',
+'longText'=>'longText',
+'macAddress'=>'macAddress',
+'mediumIncrements'=>'mediumIncrements',
+'mediumInteger'=>'mediumInteger',
+'mediumText'=>'mediumText',
+'morphs'=>'morphs',
+'multiLineString'=>'multiLineString',
+'multiPoint'=>'multiPoint',
+'multiPolygon'=>'multiPolygon',
+'nullableMorphs'=>'nullableMorphs',
+'nullableTimestamps'=>'nullableTimestamps',
+'nullableUlidMorphs'=>'nullableUlidMorphs',
+'nullableUuidMorphs'=>'nullableUuidMorphs',
+'point'=>'point',
+'polygon'=>'polygon',
+'rememberToken'=>'rememberToken',
+'set'=>'set',
+'smallIncrements'=>'smallIncrements',
+'smallInteger'=>'smallInteger',
 //'softDeletesTz',
 //'softDeletes',
-'string',
-'text',
-'timeTz',
-'time',
-'timestampTz',
-'timestamp',
-'timestampsTz',
-'timestamps',
-'tinyIncrements',
-'tinyInteger',
-'tinyText',
-'unsignedBigInteger',
-'unsignedDecimal',
-'unsignedInteger',
-'unsignedMediumInteger',
-'unsignedSmallInteger',
-'unsignedTinyInteger',
-'ulidMorphs',
-'uuidMorphs',
-'ulid',
-'uuid',
-'year'];
+'string'=>'string',
+'text'=>'text',
+'timeTz'=>'timeTz',
+'time'=>'time',
+'timestampTz'=>'timestampTz',
+'timestamp'=>'timestamp',
+'timestampsTz'=>'timestampsTz',
+'timestamps'=>'timestamps',
+'tinyIncrements'=>'tinyIncrements',
+'tinyInteger'=>'tinyInteger',
+'tinyText'=>'tinyText',
+'unsignedBigInteger'=>'unsignedBigInteger',
+'unsignedDecimal'=>'unsignedDecimal',
+'unsignedInteger'=>'unsignedInteger',
+'unsignedMediumInteger'=>'unsignedMediumInteger',
+'unsignedSmallInteger'=>'unsignedSmallInteger',
+'unsignedTinyInteger'=>'unsignedTinyInteger',
+'ulidMorphs'=>'ulidMorphs',
+'uuidMorphs'=>'uuidMorphs',
+'ulid'=>'ulid',
+'uuid'=>'uuid',
+'year'=>'year'];
 @endphp
 
             @include('sandex.engineer.engineer.partes.formulario.select', [
@@ -103,7 +103,7 @@ $tipos = [
                         'requerido'=>'required',
                         'autofocus'=>'',
                         'valores'=> $tipos,
-                        'value'=> ''
+                        'value'=> 'string'
                         ])
 
 
@@ -122,7 +122,7 @@ $tipos = [
             'campo_label'=> 'Tamanho',
             'requerido'=> '',
             'autofocus'=> '',
-            'value'=> 255
+            'value'=> 50
             ])
 
 
@@ -133,8 +133,8 @@ $tipos = [
                         'campo_label'=>'Permitir Nullo',
                         'requerido'=>'required',
                         'autofocus'=>'',
-                        'valores'=> ['não','sim',],
-                        'value'=> ''
+                        'valores'=> ['n'=>'não','s'=>'sim'],
+                        'value'=> 'n'
                         ])
 
 
@@ -145,8 +145,8 @@ $tipos = [
                         'campo_label'=>'É chave primária',
                         'requerido'=>'required',
                         'autofocus'=>'',
-                        'valores'=> ['não','sim',],
-                        'value'=> 'não'
+                        'valores'=> ['n'=>'não','s'=>'sim'],
+                        'value'=> 'n'
                         ])
 
 
@@ -155,8 +155,8 @@ $tipos = [
                         'campo_label'=>'É chave Estrangeira',
                         'requerido'=>'required',
                         'autofocus'=>'',
-                        'valores'=> ['não','sim',],
-                        'value'=> 'não'
+                        'valores'=> ['n'=>'não','s'=>'sim'],
+                        'value'=> 'n'
                         ])
 
           @include('sandex.engineer.engineer.partes.formulario.select', [
@@ -164,8 +164,8 @@ $tipos = [
                         'campo_label'=>'Campo Único',
                         'requerido'=>'required',
                         'autofocus'=>'',
-                        'valores'=> ['não','sim'],
-                        'value'=> 'não'
+                        'valores'=> ['n'=>'não','s'=>'sim'],
+                        'value'=> 'n'
                         ])
 
 
@@ -175,8 +175,8 @@ $tipos = [
                         'campo_label'=>'Permitir valores Negativos',
                         'requerido'=>'required',
                         'autofocus'=>'',
-                        'valores'=> ['não','sim'],
-                        'value'=> 'não'
+                        'valores'=> ['n'=>'não','s'=>'sim'],
+                        'value'=> 'n'
                         ])
 
 

@@ -121,7 +121,6 @@
     let modelo_definido = false;
     var lista_modelos = [];
     let modeloAtual = null;
-
     const camelCase = str => {
         let string = str.toLowerCase().replace(/[^A-Za-z0-9]/g, ' ').split(' ')
             .reduce((result, word) => result + capitalize(word.toLowerCase()))
@@ -145,7 +144,6 @@
             regrasFormulario(e.target);
         });
     });
-
     function regrasFormulario(campo) {
         inputs.forEach(function(itemLista) {
             let regex = /[^campo]/gi;
@@ -163,15 +161,12 @@
             }
         });
     }
-
     function salvarLS(chave, array_para_salvar) {
         localStorage.setItem(chave, JSON.stringify(array_para_salvar));
     }
-
     function recuperarLS(chave) {
         return JSON.parse(localStorage.getItem(chave));
     }
-
     function limparLS() {
         localStorage.clear();
     }
@@ -210,9 +205,7 @@
             this.label = label;
         }
     }
-
     function escondeAccordions() {
-
         document.getElementById('form-modelo').reset();
         document.getElementById('form-campos').reset();
         if (modelo_definido) {
@@ -223,7 +216,6 @@
             document.getElementById('div-form-campos').style.display = 'nome';
         }
     }
-
     function addModelo() {
         document.getElementById("erros_modelo").innerHTML = "";
         modelo_definido = true;
@@ -233,7 +225,6 @@
             document.getElementById("erros_modelo").innerHTML = "Os campos precisam estar preenchidos";
             return false;
         }
-
         modelo = new Modelo(titulo_modelo_singular, titulo_modelo_singular);
         modeloAtual = modelo;
         lista_modelos.push(modelo);
@@ -241,7 +232,6 @@
         escondeAccordions();
         exibirModelo();
     }
-
     function addCampo() {
         document.getElementById("erros_campos").innerHTML = "";
         let campo = new Campo(
@@ -258,18 +248,14 @@
             !campo.nome ||
             !campo.label ||
             !campo.tipo
-
         ) {
             document.getElementById("erros_campos").innerHTML = "Os campos precisam estar preenchidos";
             return false;
         }
-
-
         modeloAtual.campos.push(campo);
         escondeAccordions();
         exibirModelo();
     }
-
     function exibirModelo() {
         document.getElementById("campos_display").innerHTML = '';
         document.getElementById("modelo_display").innerHTML = '';
@@ -281,7 +267,6 @@
         });
         document.getElementById("modelo_display").appendChild(texto);
     }
-
     function obterValorCampo(campo) {
         retorno = '';
         let inputs = document.querySelectorAll("input");
@@ -292,23 +277,17 @@
         });
         return retorno;
     }
-
     function salvarDadosLS(){
         if(lista_modelos){
             salvarLS('lista_modelos', lista_modelos);
-
         }
-
     }
-
-
     function recuperarDadosLS(){
       testelista = recuperarLS('lista_modelos');
       if(testelista !== null){
         lista_modelos = testelista;
       }
     }
-
     window.onbeforeunload = function() {
         salvarDadosLS();
         if(lista_modelos[0]){
@@ -316,10 +295,10 @@
         }
         return 'Are you sure you want to leave?';
     };
-
     window.onload = function() {
         recuperarDadosLS();
         escondeAccordions();
     }
 </script>
 @endsection
+

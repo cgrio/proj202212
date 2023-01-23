@@ -5,10 +5,9 @@
         <select id="{!! $campo !!}" class="form-control @error('{!! $campo !!}') is-invalid @enderror" name="{!! $campo !!}" {!! $requerido !!} autocomplete="{!! $campo !!}" {!! $autofocus !!}>
             <option value=''></option>
 
-            @foreach($valores as $valor)
-            <option value='{!! $valor !!}'>{!! $valor !!}</option>
+@foreach($valores as $chave=>$valor)
+            <option value='{!! $chave !!}' @if($chave == $value) selected @endif>{!! $valor !!}</option>
             @endforeach
-            @endphp
         </select>
         @error('{!! $campo !!}')
         <span class="invalid-feedback" role="alert">
