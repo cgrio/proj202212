@@ -29,11 +29,14 @@
                     <hr />
                     <div class="row">
                         <div class="col">
-                            <div id='form-modelo'>
-                                <form action="">
+                            <div id='div-form-modelo'>
+
+                                <form id='form-modelo' action="">
 
                                     @include('sandex.engineer.engineer.partes.accordion.accordion_abertura', ['titulo'=> 'Modelo', 'id'=>'a1'] )
+
                                     @include('sandex.engineer.engineer.partes.accordion.item_abertura',['titulo'=> 'Modelo', 'id'=>'a1'] )
+
                                     @if ($lista_strings_templates)
                                     @for ($i = 1; $i < count($lista_strings_templates);$i++) @php if( (!str_contains($lista_strings_templates[$i], '(' ) AND str_contains(strtolower($lista_strings_templates[$i]), 'modelo' )) AND !str_contains($lista_strings_templates[$i], 'ModeloPlural' ) AND !str_contains($lista_strings_templates[$i], 'ModeloSingular' )): @endphp @include('sandex.engineer.engineer.partes.formulario.text', [ 'campo'=>
                                         str_replace("§","",$lista_strings_templates[$i])."-{$i}",
@@ -47,6 +50,11 @@
                                         @php endif; @endphp
                                         @endfor
                                         @endif
+
+                                        <div class="py-2" id="erros_modelo">
+
+                                        </div>
+
                                         <div class="col-md-8 offset-md-4">
                                             <button type="button" id="btn-modelo" onclick="addModelo()" class="btn btn-primary btn-sm">
                                                 Adicionar
@@ -60,33 +68,38 @@
                                 </form>
                             </div>
                             <br />
-                            <div id='form-campos' style="display: none;">
-                                <form action="">
+                            <div id='div-form-campos' style="display: none;">
+
+                                <form  id='form-campos' action="">
 
                                     @include('sandex.engineer.engineer.partes.accordion.accordion_abertura', ['titulo'=> 'Campos', 'id'=>'a2'] )
                                     @include('sandex.engineer.engineer.partes.accordion.item_abertura' ,['titulo'=> 'Campos', 'id'=>'a2'] )
 
-                                        @include('sandex.engineer.engineer.partes.componentes.campo_modelo' )
-                                        <div class="col-md-8 offset-md-4">
-                                            <button type="button" onclick="addCampo()" class="btn btn-primary btn-sm">
-                                                Adicionar
-                                            </button>
-                                            <button type="reset" class="btn btn-light btn-sm">
-                                                Apagar
-                                            </button>
-                                        </div>
-                                        @include('sandex.engineer.engineer.partes.accordion.item_fechamento' )
-                                        @include('sandex.engineer.engineer.partes.accordion.accordion_fechamento' )
+                                    @include('sandex.engineer.engineer.partes.componentes.campo_modelo' )
+
+                                    <div class="py-2" id="erros_campos">
+
+                                    </div>
+                                    <div class="col-md-8 offset-md-4">
+                                        <button type="button" onclick="addCampo()" class="btn btn-primary btn-sm">
+                                            Adicionar
+                                        </button>
+                                        <button type="reset" class="btn btn-light btn-sm">
+                                            Apagar
+                                        </button>
+                                    </div>
+                                    @include('sandex.engineer.engineer.partes.accordion.item_fechamento' )
+                                    @include('sandex.engineer.engineer.partes.accordion.accordion_fechamento' )
                                 </form>
                             </div>
                         </div>
                         <div class="col">
-                        <div id="modelo_display">
+                            <div id="modelo_display">
 
-                        </div>
-                        <div id="campos_display">
+                            </div>
+                            <div id="campos_display">
 
-                        </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,7 +121,6 @@
     let modelo_definido = false;
     var lista_modelos = [];
     let modeloAtual = null;
-
     const camelCase = str => {
         let string = str.toLowerCase().replace(/[^A-Za-z0-9]/g, ' ').split(' ')
             .reduce((result, word) => result + capitalize(word.toLowerCase()))
@@ -149,10 +161,10 @@
             }
         });
     }
-    function salvarArrayLS(chave, array_para_salvar) {
+    function salvarLS(chave, array_para_salvar) {
         localStorage.setItem(chave, JSON.stringify(array_para_salvar));
     }
-    function recuperarArrayLS(chave) {
+    function recuperarLS(chave) {
         return JSON.parse(localStorage.getItem(chave));
     }
     function limparLS() {
@@ -167,8 +179,8 @@
         constructor(modeloCaixaBaixaSingular, modeloCaixaBaixaPlural) {
             this.modeloCaixaBaixaSingular = modeloCaixaBaixaSingular;
             this.modeloCaixaBaixaPlural = modeloCaixaBaixaPlural;
-            this.modeloCaixaAltaSingular = camelCase(modeloCaixaBaixaSingular);
-            this.modeloCaixaAltaPlural = camelCase(modeloCaixaBaixaPlural);
+            this.modeloCaixaAltaSingular = capitalize(camelCase(modeloCaixaBaixaSingular));
+            this.modeloCaixaAltaPlural = capitalize(camelCase(modeloCaixaBaixaPlural));
         }
     }
     class Campo {
@@ -186,59 +198,70 @@
             tipo,
             tamanho,
             label,
-          ) {
+        ) {
             this.tipo = tipo;
             this.tamanho = tamanho;
             this.nome = nome;
             this.label = label;
         }
     }
-    window.onload = function() {
-        escondeAccordions();
-    }
     function escondeAccordions() {
+        document.getElementById('form-modelo').reset();
+        document.getElementById('form-campos').reset();
         if (modelo_definido) {
-            document.getElementById('form-modelo').style.display = 'none';
-            document.getElementById('form-campos').style.display = 'block';
-        }else{
-            document.getElementById('form-modelo').style.display = 'block';
-            document.getElementById('form-campos').style.display = 'nome';
+            document.getElementById('div-form-modelo').style.display = 'none';
+            document.getElementById('div-form-campos').style.display = 'block';
+        } else {
+            document.getElementById('div-form-modelo').style.display = 'block';
+            document.getElementById('div-form-campos').style.display = 'nome';
         }
     }
     function addModelo() {
+        document.getElementById("erros_modelo").innerHTML = "";
         modelo_definido = true;
         let titulo_modelo_singular = obterValorCampo('modelosingular');
         let titulo_modelo_plural = obterValorCampo('modeloplural');
-        console.log(titulo_modelo_singular, titulo_modelo_plural);
+        if (!titulo_modelo_singular || !titulo_modelo_plural) {
+            document.getElementById("erros_modelo").innerHTML = "Os campos precisam estar preenchidos";
+            return false;
+        }
         modelo = new Modelo(titulo_modelo_singular, titulo_modelo_singular);
         modeloAtual = modelo;
         lista_modelos.push(modelo);
         modelo_definido = true;
-        escondeAccordions()
+        escondeAccordions();
         exibirModelo();
     }
     function addCampo() {
-        console.log(document.getElementById('campo_nome'));
-     let campo = new Campo(
-        toSnakeCase(document.getElementById('campo_nome').value),
-        document.getElementById('campo_tipo').value,
-        document.getElementById('campo_tamanho').value,
-        document.getElementById('campo_label').value
-     );
-        campo.nullable = document.getElementById('campo_nullable').value,
-        campo.unsigned = document.getElementById('campo_unsigned').value,
-        campo.primaria = document.getElementById('campo_chave_primaria').value,
-        campo.estrangeira = document.getElementById('campo_chave_estrangeira').value
+        document.getElementById("erros_campos").innerHTML = "";
+        let campo = new Campo(
+            toSnakeCase(document.getElementById('campo_nome').value),
+            document.getElementById('campo_tipo').value,
+            document.getElementById('campo_tamanho').value,
+            document.getElementById('campo_label').value
+        );
+        campo.nullable = document.getElementById('campo_nullable').value;
+        campo.unsigned = document.getElementById('campo_unsigned').value;
+        campo.primaria = document.getElementById('campo_chave_primaria').value;
+        campo.estrangeira = document.getElementById('campo_chave_estrangeira').value;
+        if (
+            !campo.nome ||
+            !campo.label ||
+            !campo.tipo
+        ) {
+            document.getElementById("erros_campos").innerHTML = "Os campos precisam estar preenchidos";
+            return false;
+        }
         modeloAtual.campos.push(campo);
         escondeAccordions();
         exibirModelo();
     }
-    function exibirModelo(){
+    function exibirModelo() {
         document.getElementById("campos_display").innerHTML = '';
         document.getElementById("modelo_display").innerHTML = '';
         const texto = document.createTextNode(modeloAtual.modeloCaixaAltaSingular);
-        modeloAtual.campos.forEach(function(c){
-            let campo = document.createTextNode(c.label + ": "+c.tipo);
+        modeloAtual.campos.forEach(function(c) {
+            let campo = document.createTextNode(c.label + ": " + c.tipo);
             document.getElementById("campos_display").appendChild(campo);
             document.getElementById("campos_display").appendChild(document.createElement("br"));
         });
@@ -254,8 +277,28 @@
         });
         return retorno;
     }
+    function salvarDadosLS(){
+        if(lista_modelos){
+            salvarLS('lista_modelos', lista_modelos);
+        }
+    }
+    function recuperarDadosLS(){
+      testelista = recuperarLS('lista_modelos');
+      if(testelista !== null){
+        lista_modelos = testelista;
+      }
+    }
+    window.onbeforeunload = function() {
+        salvarDadosLS();
+        if(lista_modelos[0]){
+            modeloAtual = lista_modelos[0];
+        }
+        return 'Are you sure you want to leave?';
+    };
+    window.onload = function() {
+        recuperarDadosLS();
+        escondeAccordions();
+    }
 </script>
 @endsection
-
-
 
