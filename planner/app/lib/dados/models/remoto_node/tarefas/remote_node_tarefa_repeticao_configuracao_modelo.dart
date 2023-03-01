@@ -1,23 +1,24 @@
 import 'package:app/dominio/entidades/tarefas/tarefa_repeticao_configuracao_entidade.dart';
 
-class LocalTarefaRepeticaoConfiguracaoModelo {
+import '../../../http/http_erros.dart';
 
-  LocalTarefaRepeticaoConfiguracaoModelo(
+class RemotoNodeTarefaRepeticaoConfiguracaoModelo {
+  RemotoNodeTarefaRepeticaoConfiguracaoModelo(
       {required this.id, required this.tarefaId, required this.periodicidade, this.periodicidadeSemanal, this.periodo});
 
-  factory LocalTarefaRepeticaoConfiguracaoModelo.fromEntity(TarefaRepeticaoConfiguracaoEntidade tarefaRepeticaoConfiguracao) =>
-      LocalTarefaRepeticaoConfiguracaoModelo(
+  factory RemotoNodeTarefaRepeticaoConfiguracaoModelo.fromEntity(TarefaRepeticaoConfiguracaoEntidade tarefaRepeticaoConfiguracao) =>
+      RemotoNodeTarefaRepeticaoConfiguracaoModelo(
         id: tarefaRepeticaoConfiguracao.id,
         tarefaId: tarefaRepeticaoConfiguracao.tarefaId,
         periodicidade: tarefaRepeticaoConfiguracao.periodicidade,
         periodicidadeSemanal: tarefaRepeticaoConfiguracao.periodicidadeSemanal,
         periodo: tarefaRepeticaoConfiguracao.periodo,
       );
-  factory LocalTarefaRepeticaoConfiguracaoModelo.fromJson(Map json) {
+  factory RemotoNodeTarefaRepeticaoConfiguracaoModelo.fromJson(Map json) {
     if (!json.keys.toSet().containsAll(['id', 'tarefaId', 'periodicidade'])) {
-      throw Exception();
+      throw HttpErros.dadosInvalidos;
     }
-    return LocalTarefaRepeticaoConfiguracaoModelo(
+    return RemotoNodeTarefaRepeticaoConfiguracaoModelo(
         id: json['id'].toString(),
         tarefaId: json['tarefaId'].toString(),
         periodicidade: json['periodicidade'].toString(),

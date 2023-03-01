@@ -1,3 +1,3 @@
 abstract class ApagarUsuarioCasoUso {
-  Future<bool> obter({required String usuarioId});
+  Future<bool> apagar({required String usuarioId});
 }

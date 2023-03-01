@@ -1,19 +1,21 @@
 import 'package:app/dominio/entidades/tarefas/tarefa_repeticao_entidade.dart';
 
-class LocalTarefaRepeticaoModelo {
-  LocalTarefaRepeticaoModelo({required this.id, required this.tarefaId, required this.periodicidade, this.data, this.diaSemana});
-  factory LocalTarefaRepeticaoModelo.fromEntity(TarefaRepeticaoEntidade tarefaRepeticao) => LocalTarefaRepeticaoModelo(
+import '../../../http/http.dart';
+
+class RemotoNodeTarefaRepeticaoModelo {
+  RemotoNodeTarefaRepeticaoModelo({required this.id, required this.tarefaId, required this.periodicidade, this.data, this.diaSemana});
+  factory RemotoNodeTarefaRepeticaoModelo.fromEntity(TarefaRepeticaoEntidade tarefaRepeticao) => RemotoNodeTarefaRepeticaoModelo(
       id: tarefaRepeticao.id,
       tarefaId: tarefaRepeticao.tarefaId,
       periodicidade: tarefaRepeticao.periodicidade,
       data: tarefaRepeticao.data,
       diaSemana: tarefaRepeticao.diaSemana);
 
-  factory LocalTarefaRepeticaoModelo.fromJson(Map json) {
+  factory RemotoNodeTarefaRepeticaoModelo.fromJson(Map json) {
     if (!json.keys.toSet().containsAll(['id', 'tarefaId', 'periodicidade'])) {
-      throw Exception();
+      throw HttpErros.dadosInvalidos;
     }
-    return LocalTarefaRepeticaoModelo(
+    return RemotoNodeTarefaRepeticaoModelo(
       id: json['id'].toString(),
       tarefaId: json['tarefaId'].toString(),
       periodicidade: json['periodicidade'].toString(),

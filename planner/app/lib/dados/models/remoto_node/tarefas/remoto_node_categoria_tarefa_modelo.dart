@@ -1,12 +1,14 @@
 import 'package:app/dominio/entidades/tarefas/categoria_tarefa_entidade.dart';
 
-class LocalCategoriaTarefaModelo {
-  const LocalCategoriaTarefaModelo({required this.id, required this.nome, this.categoriaTarefaId, this.usuarioId, this.cor});
+import '../../../http/http.dart';
 
-  factory LocalCategoriaTarefaModelo.fromEntity(CategoriaTarefaEntidade categoria) => LocalCategoriaTarefaModelo(
+class RemotoNodeCategoriaTarefaModelo {
+  const RemotoNodeCategoriaTarefaModelo({required this.id, required this.nome, this.categoriaTarefaId, this.usuarioId, this.cor});
+
+  factory RemotoNodeCategoriaTarefaModelo.fromEntity(CategoriaTarefaEntidade categoria) => RemotoNodeCategoriaTarefaModelo(
       id: categoria.id, nome: categoria.nome, categoriaTarefaId: categoria.categoriaTarefaId, usuarioId: categoria.usuarioId, cor: categoria.cor);
 
-  factory LocalCategoriaTarefaModelo.fromJson(Map json) {
+  factory RemotoNodeCategoriaTarefaModelo.fromJson(Map json) {
     if (!json.keys.toSet().containsAll([
       'id',
       'nome',
@@ -14,9 +16,9 @@ class LocalCategoriaTarefaModelo {
       'usuarioId',
       'cor',
     ])) {
-      throw Exception();
+      throw HttpErros.dadosInvalidos;
     }
-    return LocalCategoriaTarefaModelo(
+    return RemotoNodeCategoriaTarefaModelo(
       id: json['id'].toString(),
       nome: json['nome'].toString(),
       categoriaTarefaId: json['categoriaTarefaId'].toString(),

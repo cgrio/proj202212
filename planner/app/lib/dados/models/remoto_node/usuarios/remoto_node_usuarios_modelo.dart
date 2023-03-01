@@ -1,20 +1,20 @@
 import 'package:app/dominio/entidades/usuarios/usuarios_entidade.dart';
 
-class LocalUsuarioModelo {
-  LocalUsuarioModelo({
+class RemotoNodeUsuarioModelo {
+  RemotoNodeUsuarioModelo({
     required this.id,
     required this.nome,
     required this.email,
     required this.senha,
   });
-  factory LocalUsuarioModelo.fromEntity(UsuarioEntidade usuario) =>
-      LocalUsuarioModelo(id: usuario.id, nome: usuario.nome, email: usuario.email, senha: usuario.senha);
+  factory RemotoNodeUsuarioModelo.fromEntity(UsuarioEntidade usuario) =>
+      RemotoNodeUsuarioModelo(id: usuario.id, nome: usuario.nome, email: usuario.email, senha: usuario.senha);
 
-  factory LocalUsuarioModelo.fromJson(Map json) {
+  factory RemotoNodeUsuarioModelo.fromJson(Map json) {
     if (!json.keys.toSet().containsAll(['id', 'nome', 'email', 'senha'])) {
       throw Exception();
     }
-    return LocalUsuarioModelo(
+    return RemotoNodeUsuarioModelo(
         id: json['id'].toString(), nome: json['nome'].toString(), email: json['email'].toString(), senha: json['senha'].toString());
   }
   final String id;

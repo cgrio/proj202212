@@ -1,7 +1,9 @@
 import 'package:app/dominio/entidades/tarefas/tarefa_entidade.dart';
 
-class LocalTarefaModelo {
-  LocalTarefaModelo(
+import '../../../http/http.dart';
+
+class RemotoNodeTarefaModelo {
+  RemotoNodeTarefaModelo(
       {required this.id,
       required this.titulo,
       required this.notas,
@@ -9,7 +11,7 @@ class LocalTarefaModelo {
       this.dataConclusao,
       this.dataAgendada,
       this.categoriaTarefaId});
-  factory LocalTarefaModelo.fromEntity(TarefaEntidade tarefa) => LocalTarefaModelo(
+  factory RemotoNodeTarefaModelo.fromEntity(TarefaEntidade tarefa) => RemotoNodeTarefaModelo(
       id: tarefa.id,
       titulo: tarefa.titulo,
       notas: tarefa.notas,
@@ -26,11 +28,11 @@ class LocalTarefaModelo {
   // categoriaTarefaId,
   // usuarioId
 
-  factory LocalTarefaModelo.fromJson(Map json) {
+  factory RemotoNodeTarefaModelo.fromJson(Map json) {
     if (!json.keys.toSet().containsAll(['id', 'titulo', 'notas'])) {
-      throw Exception();
+     throw HttpErros.dadosInvalidos;
     }
-    return LocalTarefaModelo(
+    return RemotoNodeTarefaModelo(
         id: json['id'].toString(),
         titulo: json['titulo'].toString(),
         notas: json['notas'].toString(),
