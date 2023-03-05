@@ -10,26 +10,19 @@ class HttpAdaptador implements HttpCliente {
   HttpAdaptador(this.cliente);
 
   @override
-  Future requisicao(
-      {required String url,
-      required String metodo,
-      Map? corpo,
-      Map? cabecalho}) async {
+  Future<Map<String, dynamic>> requisicao({required String url, required String metodo, Map? corpo, Map? cabecalho}) async {
     final cabecalhoPadrao = cabecalho?.cast<String, String>() ?? {}
-      ..addAll(
-          {'content-type': 'application/json', 'accept': 'application/json'});
+      ..addAll({'content-type': 'application/json', 'accept': 'application/json'});
     final jsonCorpo = corpo != null ? jsonEncode(corpo) : null;
     var resposta = Response('', 500);
     Future<Response>? futureResponse;
     try {
       if (metodo == 'post') {
-        futureResponse = cliente.post(Uri.parse(url),
-            headers: cabecalhoPadrao, body: jsonCorpo);
+        futureResponse = cliente.post(Uri.parse(url), headers: cabecalhoPadrao, body: jsonCorpo);
       } else if (metodo == 'get') {
         futureResponse = cliente.get(Uri.parse(url), headers: cabecalhoPadrao);
       } else if (metodo == 'put') {
-        futureResponse = cliente.put(Uri.parse(url),
-            headers: cabecalhoPadrao, body: jsonCorpo);
+        futureResponse = cliente.put(Uri.parse(url), headers: cabecalhoPadrao, body: jsonCorpo);
       }
       if (futureResponse != null) {
         resposta = await futureResponse.timeout(const Duration(seconds: 10));

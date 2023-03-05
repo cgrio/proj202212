@@ -1,5 +1,5 @@
 abstract class HttpCliente {
-  Future<Map<dynamic, dynamic>> requisicao({
+  Future<Map<String, dynamic>> requisicao({
     required String url,
     required String metodo,
     Map? corpo,

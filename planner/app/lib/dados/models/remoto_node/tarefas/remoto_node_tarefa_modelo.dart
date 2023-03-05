@@ -20,17 +20,9 @@ class RemotoNodeTarefaModelo {
       categoriaTarefaId: tarefa.categoriaTarefaId,
       usuarioId: tarefa.usuarioId);
 
-  //   id,
-  //  titulo,
-  //  notas,
-  // dataConclusao,
-  // dataAgendada,
-  // categoriaTarefaId,
-  // usuarioId
-
   factory RemotoNodeTarefaModelo.fromJson(Map json) {
     if (!json.keys.toSet().containsAll(['id', 'titulo', 'notas'])) {
-     throw HttpErros.dadosInvalidos;
+      throw HttpErros.dadosInvalidos;
     }
     return RemotoNodeTarefaModelo(
         id: json['id'].toString(),
