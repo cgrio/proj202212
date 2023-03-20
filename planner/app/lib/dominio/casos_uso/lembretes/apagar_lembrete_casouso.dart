@@ -1,3 +1,3 @@
 abstract class ApagarLembreteCasoUso {
-  Future<bool> obter({required String lembreteId});
+  Future<bool> apagar({required String lembreteId});
 }
