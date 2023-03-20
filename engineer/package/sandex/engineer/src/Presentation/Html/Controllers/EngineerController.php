@@ -162,4 +162,8 @@ class EngineerController extends Controller
     public function landingPage(){
         return view('sandex.engineer.engineer.landing_page');
     }
+
+    public function fontsface(){
+        return view('sandex.engineer.engineer.fontes_faces');
+    }
 }

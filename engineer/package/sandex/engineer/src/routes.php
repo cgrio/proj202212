@@ -6,6 +6,7 @@ use Sandex\Engineer\Presentation\Html\Controllers\EngineerController;
 Route::group(['middleware' => 'web'], function () {
     Route::get('/engineer', [EngineerController::class, 'index'])->name('engineer.index');
     Route::get('/engineer/landing', [EngineerController::class, 'landingPage'])->name('engineer.landingPage');
+    Route::get('/engineer/fontsface', [EngineerController::class, 'fontsface'])->name('engineer.fontsface');
     Route::post('/engineer/editor', [EngineerController::class, 'editor'])->name('engineer.editor');
     Route::get('/engineer/passo1', [EngineerController::class, 'passo1'])->name('engineer.passo1');
     Route::post('/engineer/passo2', [EngineerController::class, 'passo2'])->name('engineer.passo2');

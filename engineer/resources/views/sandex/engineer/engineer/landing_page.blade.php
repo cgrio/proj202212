@@ -73,11 +73,11 @@ $fonts = json_decode($fonts);
             @php for ($i=0; $i <count($fonts->items); $i = $i + 50 ) { @endphp
                 @php foreach ( $fonts->items[$i]->variants as $variant ) { @endphp
                     <link
-  href="https://fonts.googleapis.com/css?family={!! str_replace(' ', '+', $fonts->items[$i]->family); !!}" rel="stylesheet" />
-                    <span class="item-sdxdrop">
+  href="https://fonts.googleapis.com/css?family={!! str_replace(' ', '+', $fonts->items[$i]->family); !!}&text={!! str_replace(' ', '+', $fonts->items[$i]->family); !!}" rel="stylesheet" />
+                    <span class="item-sdxdrop" value="{{$fonts->items[$i]->family}}">
                         <span
-                        style="
-                        font-family: {{$fonts->items[$i]->family}};"
+                        style="font-family: {!! $fonts->items[$i]->family!!};"
+
                         >
                         {!! $fonts->items[$i]->family !!} {{preg_replace("/[^A-Za-z]/", '', $variant)?'('.preg_replace("/[^A-Za-z]/", '', $variant).')':''}} {{preg_replace("/[^0-9]/", '', $variant)}}
                     </span>
@@ -121,8 +121,10 @@ $fonts = json_decode($fonts);
         });
         $('.item-sdxdrop').hide();
         $('.item-sdxdrop').click(function () {
-            var x = $(this).text();
+            var x = $(this).attr('value');
             $(this).siblings(".selected-sdxdrop").text(x);
+            console.log(x);
+            $("div#landing *, div#landing").css("font-family", x);
             $(this).slideUp().siblings(".item-sdxdrop").slideUp();
         });
         $('.drop-css').click(function () {
