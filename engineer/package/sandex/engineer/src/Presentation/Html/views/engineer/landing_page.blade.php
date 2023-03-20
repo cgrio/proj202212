@@ -73,12 +73,11 @@ $fonts = json_decode($fonts);
             @php for ($i=0; $i <count($fonts->items); $i = $i + 50 ) { @endphp
                 @php foreach ( $fonts->items[$i]->variants as $variant ) { @endphp
                     <link
-  href="https://fonts.googleapis.com/css?family={!! str_replace(' ', '+', $fonts->items[$i]->family); !!}&text={!! str_replace(' ', '+', $fonts->items[$i]->family); !!}" rel="stylesheet" />
+  href="https://fonts.googleapis.com/css?family={!! str_replace(' ', '+', $fonts->items[$i]->family); !!}" rel="stylesheet" />
                     <span class="item-sdxdrop">
                         <span
                         style="
                         font-family: {{$fonts->items[$i]->family}};"
-
                         >
                         {!! $fonts->items[$i]->family !!} {{preg_replace("/[^A-Za-z]/", '', $variant)?'('.preg_replace("/[^A-Za-z]/", '', $variant).')':''}} {{preg_replace("/[^0-9]/", '', $variant)}}
                     </span>
