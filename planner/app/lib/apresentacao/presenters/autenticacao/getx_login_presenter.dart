@@ -31,9 +31,6 @@ class GetxLoginPresenter extends GetxController
   }
 
   @override
-  Stream<String?> get navegarParaStream => navegar
-
-  @override
   Stream<UIErro?> get senhaErroStream => _senhaErro.stream;
 
   UIErro? _validarCampo(String campo) {
