@@ -6,8 +6,23 @@ class LoginPagina extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
+                height: 240,
+                margin: EdgeInsets.only(bottom: 32),
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft
+                    ,colors: [
+                        Theme.of(context).primaryColorLight,
+                         Theme.of(context).primaryColor,
+                          Theme.of(context).primaryColorDark,
+                    ]
+                    ))
+                ),
               child: Image(image: AssetImage('lib/assets/planner_icone.png')),
             ),
             Text("Login".toUpperCase()),
