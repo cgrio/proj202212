@@ -6,28 +6,32 @@ class LoginPagina extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-                height: 240,
-                margin: EdgeInsets.only(bottom: 32),
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft
-                    ,colors: [
-                        Theme.of(context).primaryColorLight,
-                         Theme.of(context).primaryColor,
-                          Theme.of(context).primaryColorDark,
-                    ]
-                    ))
-                ),
+              height: 240,
+              margin: EdgeInsets.only(bottom: 32),
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
+                    Theme.of(context).primaryColorLight,
+                    Theme.of(context).primaryColor,
+                    Theme.of(context).primaryColorDark,
+                  ]),
+                  boxShadow: [
+                    BoxShadow(offset: Offset(0, 0), spreadRadius: 0, blurRadius: 4, color: Colors.black),
+                    BoxShadow(offset: Offset(-10, 0), spreadRadius: 0, blurRadius: 14, color: Theme.of(context).primaryColor)
+                  ],
+                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(80))),
               child: Image(image: AssetImage('lib/assets/planner_icone.png')),
             ),
-            Text("Login".toUpperCase()),
+            Text(
+              "Login".toUpperCase(),
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.headline1,
+            ),
             Form(
                 child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 TextFormField(
                   decoration: InputDecoration(labelText: 'email', icon: Icon(Icons.email)),
@@ -37,11 +41,19 @@ class LoginPagina extends StatelessWidget {
                   decoration: InputDecoration(labelText: 'password', icon: Icon(Icons.lock)),
                   obscureText: true,
                 ),
-                ElevatedButton(
-                  child: Text("Login".toUpperCase()),
-                  onPressed: () {},
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextButton(
+                    child: Text(
+                      "Login".toUpperCase(),
+                    ),
+                    onPressed: () {},
+                  ),
                 ),
-                OutlinedButton(onPressed: () {}, child: Text("Criar Conta"))
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: OutlinedButton(onPressed: () {}, child: Text("Criar Conta")),
+                )
               ],
             ))
           ],
