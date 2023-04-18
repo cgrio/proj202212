@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'componentes/login_cabecalho.dart';
+
 class LoginPagina extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -8,22 +10,7 @@ class LoginPagina extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              height: 240,
-              margin: EdgeInsets.only(bottom: 32),
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
-                    Theme.of(context).primaryColorLight,
-                    Theme.of(context).primaryColor,
-                    Theme.of(context).primaryColorDark,
-                  ]),
-                  boxShadow: [
-                    BoxShadow(offset: Offset(0, 0), spreadRadius: 0, blurRadius: 4, color: Colors.black),
-                    BoxShadow(offset: Offset(-10, 0), spreadRadius: 0, blurRadius: 14, color: Theme.of(context).primaryColor)
-                  ],
-                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(80))),
-              child: Image(image: AssetImage('lib/assets/planner_icone.png')),
-            ),
+            LoginCabecalho(),
             Text(
               "Login".toUpperCase(),
               textAlign: TextAlign.center,
@@ -34,12 +21,15 @@ class LoginPagina extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'email', icon: Icon(Icons.email)),
+                  decoration: InputDecoration(labelText: 'Email', icon: Icon(Icons.email)),
                   keyboardType: TextInputType.emailAddress,
                 ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'password', icon: Icon(Icons.lock)),
-                  obscureText: true,
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: TextFormField(
+                    decoration: InputDecoration(labelText: 'Password', icon: Icon(Icons.lock)),
+                    obscureText: true,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -52,7 +42,7 @@ class LoginPagina extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: OutlinedButton(onPressed: () {}, child: Text("Criar Conta")),
+                  child: OutlinedButton(onPressed: () {}, child: Text("Criar Conta".toUpperCase())),
                 )
               ],
             ))

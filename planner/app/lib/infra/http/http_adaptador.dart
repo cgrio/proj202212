@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:app/dados/http/http_erros.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
@@ -30,15 +32,21 @@ class HttpAdaptador implements HttpCliente {
     } catch (error) {
       throw HttpErros.servidorErro;
     }
+    inspect(resposta);
     return _handleResponse(resposta);
   }
 
-  dynamic _handleResponse(Response response) {
+  Map<String, dynamic> _handleResponse(Response response) {
     switch (response.statusCode) {
       case 200:
-        return response.body.isEmpty ? null : jsonDecode(response.body);
+        if (response.body.isEmpty) {
+          return {"error": ""};
+        } else {
+          final map = jsonDecode(response as String) as Map<String, dynamic>;
+          return map;
+        }
       case 204:
-        return null;
+        throw HttpErros.naoEncontrado;
       case 400:
         throw HttpErros.requisicaoRuim;
       case 401:
