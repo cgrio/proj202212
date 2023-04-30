@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../paginas/autenticacao/login_pagina.dart';
+import '../paginas/autenticacao/login_presenter.dart';
+import 'package:mocktail/mocktail.dart';
+
+class MockLoginPresenter extends Mock implements LoginPresenter {}
 
 class App extends StatelessWidget {
   @override
@@ -46,10 +50,11 @@ class App extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(2.0)),
         ),
         textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: primaryColorDark));
+    LoginPresenter presenter = MockLoginPresenter();
     return MaterialApp(
       title: "Planner",
       debugShowCheckedModeBanner: false,
-      home: LoginPagina(),
+      home: LoginPagina(presenter),
       theme: ThemeData(
           primaryColor: primaryColor,
           primaryColorDark: primaryColorDark,
