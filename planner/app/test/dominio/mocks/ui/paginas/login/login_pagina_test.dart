@@ -15,28 +15,43 @@ void main() {
   late StreamController<String?> senhaErrosController;
   late StreamController<bool> formularioValidoController;
   late StreamController<bool> estaCarregandoController;
-  Future<void> carregarPagina(WidgetTester tester) async {
-    presenter = MockLoginPresenter();
+  late StreamController<String?> erroGeralController;
 
+  void initStream() {
     emailErrosController = StreamController<String?>();
     senhaErrosController = StreamController<String?>();
     formularioValidoController = StreamController<bool>();
     estaCarregandoController = StreamController<bool>();
+    erroGeralController = StreamController<String?>();
+  }
 
+  void mockStreams() {
+    emailErrosController.add('');
     when(() => presenter.emailErrorStream).thenAnswer((_) => emailErrosController.stream);
     when(() => presenter.senhaErrorStream).thenAnswer((_) => senhaErrosController.stream);
-
     when(() => presenter.formularioValidoStream).thenAnswer((_) => formularioValidoController.stream);
     when(() => presenter.estaCarregandoStream).thenAnswer((_) => estaCarregandoController.stream);
+    when(() => presenter.erroGeralStream).thenAnswer((_) => erroGeralController.stream);
+  }
 
+  void closeStreams() {
+    emailErrosController.close();
+    senhaErrosController.close();
+    erroGeralController.close();
+    estaCarregandoController.close();
+    formularioValidoController.close();
+  }
+
+  Future<void> carregarPagina(WidgetTester tester) async {
+    presenter = MockLoginPresenter();
+    initStream();
+    mockStreams();
     final loginPagina = MaterialApp(home: LoginPagina(presenter));
     await tester.pumpWidget(loginPagina);
   }
 
   tearDown(() {
-    emailErrosController.close();
-    senhaErrosController.close();
-    formularioValidoController.close();
+    closeStreams();
   });
 
   testWidgets('Deve carregar com o estado inicial', (WidgetTester tester) async {
@@ -105,5 +120,35 @@ void main() {
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
     //atualiza a tela
   });
+
+  testWidgets('Deve chamar loading ', (WidgetTester tester) async {
+    await carregarPagina(tester);
+    estaCarregandoController.add(true);
+    await tester.pump();
+    estaCarregandoController.add(false);
+    await tester.pump();
+    await tester.tap(find.byType(TextButton));
+    await tester.pump();
+
+    expect(find.byType(CircularProgressIndicator), findsNothing);
+    //atualiza a tela
+  });
+
+  testWidgets('Deve apresentar uma mensagem de erro se der erro no login ', (WidgetTester tester) async {
+    String erroGeral = "Erro Geral";
+    await carregarPagina(tester);
+    erroGeralController.add(erroGeral);
+    await tester.pump();
+
+    // expect(find.text(erroGeral), findsOneWidget);
+    //atualiza a tela
+  });
+
+  testWidgets('Deve fechar os stream no dispose ', (WidgetTester tester) async {
+    await carregarPagina(tester);
+
+    addTearDown(() => {verify(() => presenter.dispose()).called(1)});
+  });
+
   //tesatr botao valido 30 minutos do video 019
 }

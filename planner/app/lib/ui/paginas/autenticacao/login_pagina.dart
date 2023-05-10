@@ -3,14 +3,24 @@ import 'package:flutter/material.dart';
 import 'componentes/login_cabecalho.dart';
 import 'login_presenter.dart';
 
-class LoginPagina extends StatelessWidget {
+class LoginPagina extends StatefulWidget {
   final LoginPresenter presenter;
   LoginPagina(this.presenter);
 
   @override
+  State<LoginPagina> createState() => _LoginPaginaState();
+}
+
+class _LoginPaginaState extends State<LoginPagina> {
+  void dispose() {
+    super.dispose();
+    widget.presenter.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(body: Builder(builder: (context) {
-      presenter.estaCarregandoStream.listen((estaCarregando) {
+      widget.presenter.estaCarregandoStream.listen((estaCarregando) {
         if (estaCarregando) {
           showDialog(
               context: context,
@@ -18,9 +28,18 @@ class LoginPagina extends StatelessWidget {
               builder: (context) {
                 return WdDialogoCarregando();
               });
+        } else {
+          if (Navigator.canPop(context)) {
+            Navigator.of(context).pop();
+          }
         }
+        widget.presenter.erroGeralStream.listen((error) {
+          if (error != null) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: Colors.red[900], content: Text(error, textAlign: TextAlign.center)));
+          }
+        });
       });
-      return WdFormLogin(presenter: presenter);
+      return WdFormLogin(presenter: widget.presenter);
     }));
   }
 }
