@@ -1,6 +1,6 @@
-import 'package:app/dados/cache/apagar_armazenamento_cache_seguro.dart';
-import 'package:app/dados/cache/obter_armazenamento_cache_seguro.dart';
-import 'package:app/dados/cache/salvar_armazenamento_cache_seguro.dart';
+import 'package:app/data/cache/apagar_armazenamento_cache_seguro.dart';
+import 'package:app/data/cache/obter_armazenamento_cache_seguro.dart';
+import 'package:app/data/cache/salvar_armazenamento_cache_seguro.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class ArmazenamentoSeguroAdaptador

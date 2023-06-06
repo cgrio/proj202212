@@ -1,6 +1,6 @@
-import 'package:app/dominio/auxiliares/dominio_erros.dart';
-import 'package:app/dominio/casos_uso/lembretes/adicionar_lembrete_casouso.dart';
-import 'package:app/dominio/entidades/lembretes/lembrete_entidade.dart';
+import 'package:app/domain/auxiliares/dominio_erros.dart';
+import 'package:app/domain/casos_uso/lembretes/adicionar_lembrete_casouso.dart';
+import 'package:app/domain/entidades/lembretes/lembrete_entidade.dart';
 import 'package:mocktail/mocktail.dart';
 
 class AdicionarLembreteMock extends Mock implements AdicionarLembreteCasoUso {

@@ -1,11 +1,14 @@
+import 'package:app/ui/helpers/erros/ui_erros.dart';
+
 abstract class LoginPresenter {
-  Stream<String?> get emailErrorStream;
-  Stream<String?> get senhaErrorStream;
+  Stream<UIErros?> get emailErrorStream;
+  Stream<UIErros?> get senhaErrorStream;
+  Stream<UIErros?> get erroGeralStream;
+  Stream<String?> get navegarParaStream;
   Stream<bool> get formularioValidoStream;
   Stream<bool> get estaCarregandoStream;
-  Stream<String?> get erroGeralStream;
   void validarEmail(String email);
   void validarSenha(String senha);
-  Future<void> autenticacao();
-  void dispose();
+  void login();
+  void irParaCadastro();
 }

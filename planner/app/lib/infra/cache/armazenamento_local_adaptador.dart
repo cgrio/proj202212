@@ -1,4 +1,4 @@
-import 'package:app/dados/cache/armazenamento_cache.dart';
+import 'package:app/data/cache/armazenamento_cache.dart';
 import 'package:localstorage/localstorage.dart';
 
 class ArmazenamentoLocalAdaptador implements ArmazenamentoLocal {

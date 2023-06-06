@@ -1,10 +1,10 @@
 import 'dart:developer';
 
-import 'package:app/dados/http/http_erros.dart';
+import 'package:app/data/http/http_erros.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
 
-import 'package:app/dados/http/http_cliente.dart';
+import 'package:app/data/http/http_cliente.dart';
 
 class HttpAdaptador implements HttpCliente {
   final Client cliente;

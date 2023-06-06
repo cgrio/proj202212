@@ -24,6 +24,7 @@ linter:
   rules:
     avoid_shadowing_type_parameters: false
     await_only_futures: true
+    must_be_immutable: false
  # rules: 10219
     # - always_require_non_null_named_parameters
 
