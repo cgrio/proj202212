@@ -1,0 +1,19 @@
+{
+    "name": "sandex/mensageria",
+    "description": "Mensageria",
+    "type": "project",
+    "license": "private",
+    "autoload": {
+        "psr-4": {
+            "Sandex\\Mensageria\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alessandro Silva",
+            "email": "alessrio@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
